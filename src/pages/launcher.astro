@@ -1,0 +1,17 @@
+---
+import InfoLayout from '../layouts/InfoLayout.astro';
+import Icon from '../components/Icon.astro';
+import { pathTo } from '../data/site';
+const features = [
+  { icon: 'shield', title: 'Acceso oficial', text: 'Inicio de sesión a través de los servicios oficiales de Microsoft/Minecraft. No se ofrecerá autenticación desde esta web.' },
+  { icon: 'cube', title: 'Verificación de licencia', text: 'Comprobación prevista de una licencia válida de Minecraft Java Edition para acceder al juego.' },
+  { icon: 'laptop', title: 'Preparación del juego', text: 'Instalación de las dependencias y mods necesarios para CartaCraft, sin distribuir archivos propietarios de Minecraft desde esta web.' },
+  { icon: 'sparkles', title: 'Actualizaciones', text: 'Instalación y actualización previstas de las dependencias y los mods del proyecto.' },
+];
+---
+<InfoLayout title="CartaCraft Launcher — En desarrollo" description="Presentación de CartaCraft Launcher y sus funciones previstas de acceso oficial, licencia e instalación de mods. Sin descarga pública disponible." current="launcher/" heading="CartaCraft Launcher" eyebrow="En desarrollo" icon="cube">
+  <p class="lead">Un launcher independiente pensado para preparar tu aventura en CartaCraft.</p><div class="notice"><Icon name="info" /><p><strong>Aún no disponible para descarga pública.</strong><br />No hay una versión pública descargable ni un inicio de sesión disponible en esta web.</p></div>
+  <h2>Funciones previstas</h2><p>Estas funciones describen el objetivo del desarrollo. No confirman que ya estén implementadas o funcionando.</p><div class="feature-grid">{features.map(({ icon, title, text }) => <article><Icon name={icon} /><h3>{title}</h3><p>{text}</p></article>)}</div>
+  <h2>Privacidad antes del lanzamiento</h2><p>El futuro acceso con Microsoft OAuth podría implicar el procesamiento de identificadores y tokens y el uso de servicios de Microsoft. El tratamiento, almacenamiento, retención y eliminación de esos datos deberán revisarse en la implementación real antes de una versión pública.</p><p>La información sobre el launcher se actualizará cuando pueda verificarse su funcionamiento. Consulta también la <a href={pathTo('privacidad/')}>información de privacidad de esta web</a>.</p>
+  <h2>Proyecto independiente</h2><p>El launcher forma parte del proyecto de la comunidad de Carta. Su presentación no implica aprobación, patrocinio ni asociación con Microsoft o Mojang Studios.</p>
+</InfoLayout>

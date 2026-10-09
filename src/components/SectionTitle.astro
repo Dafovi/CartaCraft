@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+interface Props { icon?: string; id?: string }
+const { icon = 'star', id } = Astro.props;
+---
+<h2 class="section-title" id={id}><span class="title-icon"><Icon name={icon} /></span><span><slot /></span><span class="title-spark" aria-hidden="true">✦</span></h2>

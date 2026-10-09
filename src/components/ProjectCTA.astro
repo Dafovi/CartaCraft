@@ -1,0 +1,7 @@
+---
+import Icon from './Icon.astro';
+import { pathTo } from '../data/site';
+interface Props { href?: string; label?: string; secondary?: boolean; icon?: string }
+const { href = pathTo('proyecto/'), label = 'Conocer el proyecto', secondary = false, icon = 'play' } = Astro.props;
+---
+<a class:list={['button', secondary ? 'button-secondary' : 'button-primary']} href={href}><Icon name={icon} /><span>{label}</span>{!secondary && <Icon name="arrow" />}</a>

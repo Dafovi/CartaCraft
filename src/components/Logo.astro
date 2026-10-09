@@ -1,0 +1,7 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/cartacraft-logo.png';
+interface Props { large?: boolean }
+const { large = false } = Astro.props;
+---
+<span class:list={['wordmark', { 'wordmark-large': large }]}><Image src={logo} alt="CartaCraft" widths={large ? [480, 720, 1080] : [240, 480]} sizes={large ? '(max-width: 600px) 90vw, 600px' : '210px'} width={large ? 600 : 210} height={large ? 200 : 70} format="webp" loading="eager" /></span>

@@ -1,0 +1,12 @@
+---
+import InfoLayout from '../layouts/InfoLayout.astro';
+import { pathTo } from '../data/site';
+---
+<InfoLayout title="Privacidad de la web — CartaCraft" description="Información sobre la web estática de CartaCraft, sus enlaces externos, el alojamiento previsto en GitHub Pages y el futuro launcher." current="privacidad/" heading="Privacidad, con claridad" eyebrow="Información de esta web" icon="shield">
+  <p class="lead">Esta información describe la primera versión de la web de CartaCraft. La privacidad del futuro launcher deberá revisarse por separado antes de su lanzamiento.</p>
+  <h2>Qué hace esta web</h2><p>La web es estática e informativa. No incorpora cuentas, formularios, autenticación, herramientas de analítica ni cookies publicitarias. Tampoco guarda información en el almacenamiento del navegador. Las fuentes y las imágenes utilizadas se sirven junto con la propia web.</p>
+  <h2>Alojamiento y registros del proveedor</h2><p>Esta versión está preparada para alojarse en GitHub Pages. Cuando se publique allí, GitHub podrá procesar datos técnicos de las solicitudes, como la dirección IP, para prestar y proteger el servicio. La ausencia de analítica propia no significa que el proveedor de alojamiento no procese datos.</p><p>Para conocer las prácticas del proveedor, consulta la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">declaración de privacidad de GitHub<span class="sr-only"> (abre en otra pestaña)</span></a>.</p>
+  <h2>Enlaces a otros sitios</h2><p>Los enlaces a Twitch y a documentación externa te llevan a servicios de terceros. Sus propias políticas se aplican al visitarlos. No integramos reproductores, chats ni seguimiento de Twitch en esta web.</p>
+  <h2>El futuro launcher</h2><p>CartaCraft Launcher está en desarrollo. El acceso previsto con Microsoft/Minecraft podría requerir el procesamiento de identificadores y tokens a través de los servicios de Microsoft. No se ha verificado aquí el manejo exacto de esos datos.</p><p>Antes del lanzamiento será necesario revisar la implementación real y publicar información específica sobre tratamiento, almacenamiento, retención y eliminación de datos. Esta página no sustituye esa revisión.</p>
+  <h2>Consultas de privacidad</h2><p>El canal público disponible actualmente es <a href={pathTo('contacto/')}>el canal de Carta en Twitch</a>. Todavía no hay un medio específico de soporte o privacidad anunciado. Se incorporará cuando el proyecto lo confirme.</p>
+</InfoLayout>

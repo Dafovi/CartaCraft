@@ -1,0 +1,16 @@
+---
+import InfoLayout from '../layouts/InfoLayout.astro';
+import StatusCard from '../components/StatusCard.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import { statuses, pathTo } from '../data/site';
+import { Image } from 'astro:assets';
+import cat from '../assets/gato-naranja.png';
+---
+<InfoLayout title="El proyecto — CartaCraft" description="Qué es CartaCraft, para quién se está construyendo y cuál es el estado de su servidor privado, mods y comunidad." current="proyecto/" heading="Una aventura que construimos juntos" eyebrow="El proyecto CartaCraft">
+  <p class="lead">CartaCraft es un proyecto privado de <strong>Minecraft Java Edition</strong>, creado para la comunidad de la streamer Cartafilou, a quien conocemos como Carta.</p>
+  <h2>Un mundo para nuestra comunidad</h2><p>La idea es tener un lugar para compartir partidas, crear historias y vivir aventuras juntos. Se están desarrollando mods propios y preparando eventos para dar identidad al proyecto.</p>
+  <figure class="project-companion"><Image src={cat} alt="Nuestro gato naranja ilustrado: pelaje atigrado, ojos verdes, orejas prominentes y cola anillada." widths={[240, 480]} sizes="(max-width: 600px) 140px, 180px" width={180} height={225} format="webp" loading="lazy" /><figcaption><h2>Nuestro compañero de aventuras</h2><p>El gato naranja de Carta también tiene su lugar en el mundo de CartaCraft.</p></figcaption></figure>
+  <h2>¿Se puede entrar al servidor?</h2><p>El servidor se ha probado localmente y <strong>no está abierto al público</strong>. Esta web presenta el proyecto; no ofrece registro, invitaciones automáticas ni acceso al juego.</p>
+  <h2>Así vamos</h2><div class="status-grid">{statuses.map((status) => <StatusCard {...status} />)}</div>
+  <h2>Un launcher independiente</h2><p>CartaCraft Launcher está en desarrollo. Está previsto que facilite el acceso oficial y la preparación de las dependencias y mods del proyecto. Sus funciones todavía no están disponibles para uso público.</p><ProjectCTA href={pathTo('launcher/')} label="Conocer el launcher" icon="cube" />
+</InfoLayout>

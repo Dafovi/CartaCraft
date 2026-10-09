@@ -1,0 +1,10 @@
+---
+import InfoLayout from '../layouts/InfoLayout.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+---
+<InfoLayout title="Contacto y comunidad — CartaCraft" description="Encuentra a Cartafilou en Twitch, el canal público de la comunidad de CartaCraft. El canal específico de soporte y privacidad está pendiente." current="contacto/" heading="Nos vemos en la comunidad" eyebrow="Contacto" icon="mail">
+  <p class="lead">Puedes encontrar a Carta y seguir las novedades del proyecto en su canal público de Twitch.</p><div class="contact-card"><Icon name="twitch" /><div><h2>Cartafilou en Twitch</h2><p>Directos, comunidad y novedades de Carta.</p></div><a class="button button-primary" href={site.twitch} target="_blank" rel="noopener noreferrer">Visitar el canal <Icon name="external" /><span class="sr-only"> (abre en otra pestaña)</span></a></div>
+  <h2>Soporte y privacidad</h2><p>Todavía no hay un correo público ni un canal específico de soporte o privacidad confirmado. Esta página se actualizará cuando esté disponible.</p><p>El canal de Twitch es un espacio público de comunidad. Evita compartir contraseñas, tokens o información personal sensible en el chat.</p>
+  <h2>Acceso a CartaCraft</h2><p>El servidor es privado y no está abierto al público. Esta web no gestiona solicitudes de acceso, registros ni descargas del launcher.</p>
+</InfoLayout>

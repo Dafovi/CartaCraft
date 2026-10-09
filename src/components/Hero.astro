@@ -1,0 +1,18 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { Image } from 'astro:assets';
+import hero from '../assets/hero-carta-gato.png';
+import ProjectCTA from './ProjectCTA.astro';
+import { pathTo } from '../data/site';
+---
+<section class="hero" aria-labelledby="hero-title">
+  <Image class="hero-artwork" src={hero} alt="Carta de espaldas junto a nuestro gato naranja atigrado, contemplando un castillo iluminado en una noche de Minecraft con árboles rosados." widths={[640, 960, 1280, 1672]} sizes="(max-width: 1344px) 100vw, 1344px" width={1672} height={941} format="webp" quality={85} loading="eager" fetchpriority="high" />
+  <div class="hero-copy">
+    <p class="eyebrow"><span aria-hidden="true">✦</span> Comunidad <b>·</b> Creatividad <b>·</b> Aventuras juntos</p>
+    <h1 id="hero-title"><span class="welcome">Bienvenidos a</span><Logo large /></h1>
+    <p class="hero-subtitle">Una aventura de Minecraft creada<br class="desktop-break" /> para la <strong>comunidad de Carta.</strong></p>
+    <div class="hero-actions"><ProjectCTA /><ProjectCTA href={pathTo('launcher/')} label="Estado del launcher" secondary icon="cube" /></div>
+    <ul class="hero-features"><li><Icon name="people" /> Nuestra comunidad</li><li><Icon name="calendar" /> Eventos previstos</li><li><Icon name="cube" /> Mods en desarrollo</li><li><Icon name="gamepad" /> Aventuras juntos</li></ul>
+  </div>
+</section>

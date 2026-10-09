@@ -1,0 +1,14 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { navigation, pathTo, site } from '../data/site';
+---
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <a class="brand-link" href={pathTo()} aria-label="CartaCraft — Inicio"><Logo /></a>
+    <p class="disclaimer">{site.disclaimer}</p>
+    <nav aria-label="Navegación del pie de página">{navigation.slice(1).map(({ label, path }) => <a href={pathTo(path)}>{label}</a>)}</nav>
+    <a class="footer-twitch" href={site.twitch} target="_blank" rel="noopener noreferrer" aria-label="Cartafilou en Twitch (abre en otra pestaña)"><Icon name="twitch" /></a>
+  </div>
+  <p class="footer-note">Hecho para compartir aventuras. <span aria-hidden="true">✧</span> CartaCraft</p>
+</footer>

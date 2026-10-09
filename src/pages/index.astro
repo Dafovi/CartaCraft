@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import community from '../assets/carta-comunidad.png';
+import launcher from '../assets/launcher-habitacion.png';
+import twitch from '../assets/carta-twitch.png';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import StatusCard from '../components/StatusCard.astro';
+import Icon from '../components/Icon.astro';
+import { statuses, pathTo, site } from '../data/site';
+---
+<Layout title="CartaCraft — Una aventura para la comunidad de Carta" description="Conoce CartaCraft, el proyecto privado de Minecraft Java para la comunidad de Cartafilou. Servidor, mods propios y launcher en desarrollo.">
+  <Hero />
+  <section class="panel about-panel" aria-labelledby="about-title">
+    <div class="about-copy"><SectionTitle id="about-title">¿Qué es <span class="pink">CartaCraft</span>?</SectionTitle>
+      <div class="inset-copy"><p>CartaCraft es un <strong>proyecto privado de Minecraft Java</strong> creado para la comunidad de <strong class="pink">Cartafilou.</strong></p><p>Un mundo que estamos construyendo para jugar juntos, crear historias y compartir aventuras. Los mods propios y los eventos están en desarrollo.</p><a class="text-link" href={pathTo('proyecto/')}>Descubre el proyecto <Icon name="arrow" /></a></div>
+    </div>
+    <div class="carta-panel"><Image class="section-artwork" src={community} alt="Carta con su cabello rojo cereza, gafas rosadas y chaqueta negra junto a Cinnamoroll. La ilustración dice: Más que un servidor… una comunidad." widths={[480, 720, 1080]} sizes="(max-width: 600px) 90vw, 50vw" width={720} height={405} format="webp" quality={85} loading="lazy" /></div>
+  </section>
+  <section class="panel launcher-panel" aria-labelledby="launcher-title">
+    <div class="launcher-art"><Image class="section-artwork" src={launcher} alt="Carta en su escritorio, rodeada de luces violetas, un ordenador y decoraciones de Minecraft." widths={[480, 720, 1080]} sizes="(max-width: 600px) 90vw, 45vw" width={720} height={405} format="webp" quality={85} loading="lazy" /></div>
+    <div class="launcher-copy"><div class="launcher-heading"><SectionTitle id="launcher-title" icon="cube"><span class="pink">CartaCraft</span> Launcher</SectionTitle><span class="badge badge-outline">En desarrollo</span></div><p>Estamos creando un launcher independiente para preparar tu aventura en CartaCraft.</p><p class="launcher-planned">Funciones previstas: acceso oficial con Microsoft/Minecraft, verificación de licencia e instalación y actualización de dependencias y mods.</p><div class="notice"><Icon name="info" /><p><strong>Aún no disponible para descarga pública.</strong><br />El launcher sigue en desarrollo. Gracias por la paciencia. <span aria-hidden="true">♡</span></p></div><a class="text-link" href={pathTo('launcher/')}>Conocer las funciones previstas <Icon name="arrow" /></a></div>
+  </section>
+  <section class="status-section" aria-labelledby="status-title"><SectionTitle id="status-title" icon="bars">Estado del proyecto</SectionTitle><div class="status-grid">{statuses.map((status) => <StatusCard {...status} />)}</div></section>
+  <section class="panel twitch-panel" aria-labelledby="twitch-title"><div class="twitch-avatar"><Image src={twitch} alt="Carta sonriente abrazando a Cinnamoroll, con corazones y estrellas rosadas." widths={[240, 480]} sizes="(max-width: 600px) 110px, 230px" width={240} height={180} format="webp" loading="lazy" /></div><div class="twitch-copy"><SectionTitle id="twitch-title" icon="twitch">Sigue a <span class="pink">Carta</span> en Twitch</SectionTitle><p>Comparte sus directos y sigue las novedades de CartaCraft.<br class="desktop-break" /> La aventura empieza en la comunidad.</p></div><a class="button button-primary" href={site.twitch} target="_blank" rel="noopener noreferrer"><Icon name="twitch" /><span>Ir al canal de Twitch<span class="sr-only"> (abre en otra pestaña)</span></span><Icon name="arrow" /></a></section>
+</Layout>

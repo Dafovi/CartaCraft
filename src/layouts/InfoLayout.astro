@@ -1,0 +1,10 @@
+---
+import Layout from './Layout.astro';
+import Icon from '../components/Icon.astro';
+import { pathTo } from '../data/site';
+interface Props { title: string; description: string; current: string; heading: string; eyebrow: string; icon?: string }
+const { title, description, current, heading, eyebrow, icon = 'star' } = Astro.props;
+---
+<Layout title={title} description={description} current={current}>
+  <div class="info-page"><a class="text-link back-link" href={pathTo()}><span aria-hidden="true">←</span> Volver al inicio</a><header class="info-heading"><p class="eyebrow"><Icon name={icon} /> {eyebrow}</p><h1>{heading}</h1></header><div class="panel prose"><slot /></div></div>
+</Layout>

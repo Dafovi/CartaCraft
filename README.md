@@ -1,72 +1,85 @@
-<div align="center">
-
-# ✨ CartaCraft
+# CartaCraft — web oficial, primera versión
 
 **Un mundo de aventuras creado para la comunidad de Carta.**
 
-Sitio web oficial de **CartaCraft**, una experiencia privada y personalizada de **Minecraft Java Edition** creada alrededor de la comunidad de [Cartafilou](https://www.twitch.tv/cartafilou), conocida como **Carta**.
+Web estática en español para el proyecto privado de Minecraft Java Edition de la comunidad de [Cartafilou](https://www.twitch.tv/cartafilou). Implementada con Astro, TypeScript estricto y CSS organizado. Conserva la composición, jerarquía y paleta del mockup aprobado e incorpora las seis ilustraciones independientes entregadas por el proyecto. El inventario está en [docs/RECURSOS_PENDIENTES.md](docs/RECURSOS_PENDIENTES.md).
 
-[Canal de Twitch](https://www.twitch.tv/cartafilou) · [Web prevista](https://dafovi.github.io/CartaCraft/)
+Este repositorio contiene únicamente la página web pública. El servidor, los mods y el launcher se desarrollan por separado. La existencia de un registro de aplicación en Microsoft Entra no implica que Minecraft Services haya autorizado el launcher.
 
-</div>
+## Instalación y comandos
 
-> **Estado:** sitio web en desarrollo. La dirección indicada es la URL prevista para su publicación y puede no estar disponible todavía.
+Requiere Node **22.12 o superior**; Node 24 recomendado (también usado en Actions).
 
-## 🌸 ¿Qué es CartaCraft?
+```sh
+npm ci
+npm run dev
+npm run check
+npm run build
+npm run verify
+npm run preview
+```
 
-CartaCraft es un proyecto comunitario de Minecraft que busca reunir a un pequeño grupo de participantes en una experiencia con eventos, mecánicas y contenido personalizado.
+Desarrollo: `http://localhost:4321/CartaCraft/`. Preview de producción: `http://localhost:4321/CartaCraft/` (o el puerto que imprima Astro). `verify` se ejecuta después del build; verifica las cinco páginas, rutas, recursos, fuentes, anclas, srcset, canonical, metadatos, semántica básica y aviso obligatorio.
 
-El proyecto contempla:
+Las fuentes Fredoka y Nunito Sans están empaquetadas localmente con `@fontsource`, subconjunto latino y `font-display: swap`. Las imágenes originales usadas se optimizan a WebP en el build. No hay React, backend, cuentas, autenticación web, analytics ni embeds de Twitch. `scripts/astro.mjs` desactiva la telemetría de la herramienta únicamente para este proyecto, sin escribir configuración global.
 
-- Un servidor privado de Minecraft Java Edition.
-- Mods y mecánicas desarrollados para los eventos.
-- Un launcher propio para facilitar la instalación y las actualizaciones.
-- Novedades e información dirigidas a la comunidad de Carta.
+## Estructura
 
-El servidor, los mods y el launcher se desarrollan por separado. **Este repositorio contiene únicamente la página web pública.**
+```text
+src/
+  assets/      seis PNG originales con nombres descriptivos
+  components/  Header, Footer, Logo, Hero, Icon,
+               SectionTitle, StatusCard, ProjectCTA
+  data/        site.ts: navegación, enlace Twitch, estados y helper de base
+  layouts/     Layout (SEO y estructura) / InfoLayout (páginas públicas)
+  pages/       index, proyecto, launcher, privacidad, contacto
+  styles/      global.css y artwork.css: componentes, arte y responsive
+public/        favicon SVG decorativo, .nojekyll
+scripts/       verify-build.mjs
+docs/          recursos pendientes y verificación
+.github/       workflow manual de Pages
+referencias/   originales preservados; no se copian al sitio público
+```
 
-## 🌐 Sobre esta web
+## GitHub Pages: preparado, sin publicar
 
-La página servirá para:
+Destino previsto: **https://dafovi.github.io/CartaCraft/**. Esta URL es la configuración esperada, no una confirmación de publicación.
 
-- Presentar CartaCraft y su relación con la comunidad de Carta.
-- Explicar el propósito y el estado del launcher.
-- Publicar información verificable sobre el proyecto.
-- Ofrecer páginas de contacto y privacidad.
-- Compartir novedades cuando estén disponibles.
+`astro.config.mjs` define `site: 'https://dafovi.github.io'`, `base: '/CartaCraft/'`, salida estática y barra final. Todos los enlaces usan el helper de base, incluidos favicon y páginas interiores. Las rutas públicas son `/CartaCraft/`, `/CartaCraft/proyecto/`, `/CartaCraft/launcher/`, `/CartaCraft/privacidad/` y `/CartaCraft/contacto/`.
 
-El diseño toma como referencia la identidad visual de Cartafilou: tonos rosas, violetas y azules nocturnos, personajes de estilo anime y una ambientación fantástica inspirada en los mundos de bloques.
+Se pueden configurar `SITE_URL` y `SITE_BASE` como variables de entorno de build y verificación o variables de repositorio en Actions. Si cambia el destino, cambiar ambas, reconstruir y validar. Ejemplo PowerShell:
 
-## 🚧 Estado del proyecto
+```powershell
+$env:SITE_URL = 'https://dafovi.github.io'
+$env:SITE_BASE = '/CartaCraft/'
+npm run build
+npm run verify
+```
 
-| Componente | Estado |
-| --- | --- |
-| Sitio web oficial | En desarrollo |
-| Servidor privado | Probado en entorno local |
-| Mods propios | En desarrollo |
-| Launcher independiente | En desarrollo; sin descarga pública |
-| Autenticación oficial del launcher | Pendiente de implementación y verificación |
+Después de autorizar la publicación:
 
-La existencia del registro de la aplicación en Microsoft Entra **no implica** que Minecraft Services haya autorizado el launcher.
+1. Revisar los pendientes de datos y derechos de uso público de recursos de terceros.
+2. El repositorio confirmado es `Dafovi/CartaCraft`, con rama `master`. La implementación se incorpora sobre su historial existente; subir código no activa Pages.
+3. En GitHub → Settings → Pages, elegir **GitHub Actions** como origen.
+4. En Actions, ejecutar manualmente **Publicar CartaCraft en GitHub Pages**. El workflow no se activa al hacer push.
+5. El workflow instala con `npm ci`, comprueba tipos, construye, valida y despliega `dist/`. Revisar la URL devuelta y probar enlaces interiores también mediante acceso directo.
 
-## 🛠️ Tecnología prevista para la web
+Referencia técnica: [guía oficial Astro para GitHub Pages](https://docs.astro.build/en/guides/deploy/github/).
 
-- [Astro](https://astro.build/) y TypeScript.
-- CSS moderno y diseño responsive.
-- Despliegue estático mediante GitHub Pages.
+## Accesibilidad y revisión
 
-> La implementación y los comandos de instalación se documentarán cuando se incorpore el código. Esta sección describe la arquitectura prevista, no funcionalidades ya entregadas.
+Un h1 por página, landmarks, idioma español, enlaces descriptivos, navegación activa, enlace para saltar al contenido, foco visible y alt/dimensiones de imágenes. El menú móvil usa un botón con `aria-expanded` y `aria-controls`; Escape cierra y devuelve foco. Sin JavaScript, la navegación permanece visible. Las animaciones son mínimas y respetan `prefers-reduced-motion`.
 
-## 🔐 Privacidad
+El color de los botones se oscureció respecto al rosa brillante de referencia para sostener el contraste de texto blanco. La composición sigue el mockup y usa el hero, paneles y logo entregados, sin generar nuevos personajes. En móvil se reserva una franja inferior del hero para mantener visibles a Carta y su gato. Consultar [docs/VERIFICACION.md](docs/VERIFICACION.md) para resultados y límites de QA.
 
-La web incorporará una página pública de privacidad con información acorde con su comportamiento real. El launcher, por su parte, tendrá su propia descripción de autenticación y tratamiento de datos, que se revisará antes de cualquier distribución pública.
+## Privacidad y estado del proyecto
 
-## 💜 Comunidad
+La información pública distingue esta web de las funciones futuras del launcher. No se anuncia aprobación de Microsoft/Mojang, autenticación implementada ni descargas públicas. El servidor está probado localmente, los mods y launcher están en desarrollo y la comunidad está en formación.
 
-Sigue las novedades y transmisiones de Carta en [twitch.tv/cartafilou](https://www.twitch.tv/cartafilou).
+GitHub Pages puede procesar registros técnicos aunque la web no añada analítica. Twitch es un enlace externo sin embed. No hay secretos, IDs OAuth ni datos personales añadidos. Antes del lanzamiento del launcher, revisar su implementación y actualizar la información de privacidad con prácticas comprobadas. Falta un canal específico de soporte/privacidad; no se inventó un correo.
 
-## 📄 Aviso legal
+## Recursos y licencia
 
-CartaCraft es un proyecto independiente de la comunidad y **no está afiliado, patrocinado ni respaldado por Mojang Studios o Microsoft**.
+Los seis recursos se copiaron desde los adjuntos con nombres descriptivos; los archivos originales de Descargas no se modificaron. Astro genera las variantes WebP optimizadas sin cambiar las ilustraciones. Los PNG de trabajo se conservan en `src/assets/`; no se sirven completos ni se publican las referencias fotográficas en Pages.
 
-Los nombres y marcas de terceros pertenecen a sus respectivos titulares. Los recursos visuales del canal y las ilustraciones del proyecto no se ofrecen automáticamente bajo una licencia de reutilización. No se ha definido todavía una licencia para el código de este repositorio.
+Los nombres y marcas de terceros pertenecen a sus respectivos titulares. Los recursos visuales y las ilustraciones no se ofrecen automáticamente bajo una licencia de reutilización. No se ha definido todavía una licencia para el código de este repositorio. La entrega de una imagen para integrar no equivale a una verificación de derechos de terceros; antes de publicar se mantiene pendiente confirmar los permisos pertinentes, incluidos los elementos de Cinnamoroll.

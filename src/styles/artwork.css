@@ -1,0 +1,55 @@
+/* Approved independent artwork; interface text and controls remain real HTML. */
+@layer components {
+  .wordmark { display: block; width: 210px; line-height: 0; filter: drop-shadow(0 0 7px #d520a344); }
+  .wordmark img { width: 100%; height: auto; }
+  .wordmark-large { width: min(600px, 100%); margin: -3px 0 -6px -20px; }
+  .hero { min-height: 540px; }
+  .hero-copy { width: 58%; }
+  .hero-artwork { position: absolute; inset: -25px -32px 0; z-index: -2; width: calc(100% + 64px); height: calc(100% + 25px); max-width: none; object-fit: cover; object-position: center 60%; }
+  .hero::after { background: linear-gradient(90deg, #080b25eb 0%, #080b25cc 28%, #080b2580 47%, #080b250a 68%), linear-gradient(0deg, #080b2555, transparent 30%); }
+  .carta-panel { height: auto; min-height: 0; background: #121636; }
+  .carta-panel .section-artwork { width: 100%; height: auto; min-height: 0; object-fit: contain; object-position: center; }
+  .launcher-art { min-height: 285px; background: #211047; border-right: 1px solid #7743a0; }
+  .launcher-art .section-artwork { width: 100%; height: 100%; object-fit: cover; object-position: 42% center; }
+  .twitch-avatar { width: 230px; overflow: visible; }
+  .twitch-avatar img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+  .footer-inner .wordmark { width: 170px; }
+  .project-companion { display: flex; align-items: center; gap: 28px; padding: 22px; margin: 28px 0; border: 1px solid #544785; border-radius: 16px; background: radial-gradient(ellipse at 20% 50%, #82433255, transparent 65%), #151538; }
+  .project-companion img { width: 180px; flex-shrink: 0; }
+  .project-companion h2 { margin-top: 0; }
+}
+@layer responsive {
+  @media (min-width: 1450px) { .hero { min-height: 560px; } }
+  @media (max-width: 1180px) { .wordmark { width: 190px; } .wordmark-large { width: min(560px, 100%); } .hero-copy { width: 64%; } .twitch-avatar { width: 175px; } }
+  @media (max-width: 900px) {
+    .hero { min-height: 520px; }
+    .hero-copy { width: 70%; }
+    .hero-artwork { inset-inline: -18px; width: calc(100% + 36px); object-position: 65% center; }
+    .hero::after { background: linear-gradient(90deg, #080b25e6, #080b25b3 42%, #080b2533 82%); }
+    .about-panel, .launcher-panel { grid-template-columns: 1fr; }
+    .carta-panel .section-artwork { width: 100%; height: auto; min-height: 0; }
+    .launcher-art { min-height: 0; border-right: 0; border-bottom: 1px solid #7743a0; }
+    .launcher-art .section-artwork { width: 100%; height: auto; object-fit: contain; }
+    .twitch-avatar { width: 150px; margin-left: 0; max-height: 150px; }
+    .twitch-panel .button { margin-left: 170px; }
+  }
+  @media (max-width: 600px) {
+    .wordmark { width: 185px; }
+    .wordmark-large { width: calc(100% + 10px); margin: 2px 0 4px -8px; }
+    .hero { min-height: 680px; padding-top: 26px; padding-bottom: 210px; }
+    .hero-copy { width: 100%; }
+    .hero-artwork { inset: auto -12px 0; width: calc(100% + 24px); height: 360px; object-position: right bottom; }
+    .hero::after { background: linear-gradient(180deg, #080b25ed 0%, #080b25cf 24%, #080b2599 52%, #080b251a 75%, #080b2580 100%); }
+    .hero-features { margin-top: 20px; padding: 10px; background: #080b25d9; border: 1px solid #7256aa77; border-radius: 10px; }
+    .carta-panel .section-artwork { width: 100%; height: auto; min-height: 0; object-fit: contain; }
+    .launcher-art { min-height: 0; }
+    .launcher-art .section-artwork { width: 100%; height: auto; object-fit: contain; }
+    .twitch-avatar { width: 110px; height: 100px; max-height: none; border-radius: 0; }
+    .twitch-copy { flex-basis: calc(100% - 130px); }
+    .twitch-panel .button { margin: 0; }
+    .project-companion { gap: 14px; padding: 16px; align-items: flex-start; }
+    .project-companion img { width: 120px; }
+    .project-companion h2 { font-size: 1.25rem; }
+    .project-companion p { font-size: .9rem; }
+  }
+}
